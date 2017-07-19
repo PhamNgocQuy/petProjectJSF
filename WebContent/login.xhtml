@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<style type="text/css">
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+</style>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+
+
+	<title>Login</title>
+	<h:outputScript name="js/jquery-3.1.0.min.js" />
+	<h:outputScript name="js/bootstraps.min.js" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="bootstrap-theme.min.css" />
+
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form class="form-signin">
+			<h2 class="form-signin-heading">Please sign in</h2>
+		User Name: <h:inputText id="username"
+				value="#{accountController.account.email}" required="true"
+				class="form-control" />
+			
+		Password:  <h:inputSecret id="password"
+				value="#{accountController.account.passwrod}" required="true"
+				class="form-control" />
+			
+		Register  <h:selectBooleanCheckbox id="register"
+				value="#{accountController.register}" />
+			<br></br>
+			<h:commandButton value="sumbit" action="#{accountController.login}"
+				class="btn btn-lg btn-primary btn-block" />
+			<H3>#{accountController.hasError}</H3>
+		</h:form>
+	</div>
+</h:body>
+
+</html>

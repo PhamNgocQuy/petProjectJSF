@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>#{homeController.currentType}</title>
+</h:head>
+<h:body>
+	<ui:include src="nav.xhtml"></ui:include>
+	<h:form>
+		<table border="1" style="margin: auto; column-count: 3;">
+			<ui:repeat var="item" value="#{homeController.listStory}">
+				<tr>
+					<td><h:commandLink action="reader"
+							actionListener="#{homeController.setCurrentStory(item)}">#{item.title}</h:commandLink></td>
+				</tr>
+			</ui:repeat>
+		</table>
+	</h:form>
+</h:body>
+</html>
