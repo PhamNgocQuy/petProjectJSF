@@ -1,16 +1,22 @@
 package com.haku.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.haku.hibernate.HibernateUtils;
 import com.haku.model.StoryProperties;
+import com.haku.service.ReaderHibernateDemo;
 import com.haku.service.ReaderService;
 import com.haku.service.TypeStoryService;
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name="homeController")
+@ManagedBean(name = "homeController")
 @SessionScoped
 public class HomeController {
 
@@ -30,10 +36,12 @@ public class HomeController {
 	public String getPage() {
 		return "liststory";
 	}
+
 	public String getPageHistory() {
 		currentType = "Lịch sử đọc";
 		return "liststory";
 	}
+
 	public ArrayList<StoryProperties> getListStory() {
 		ArrayList<StoryProperties> list = readerService.getListHF(TypeStoryService.getTableName(currentType));
 		return list;
@@ -46,10 +54,11 @@ public class HomeController {
 	public void setCurrentStory(StoryProperties currentStory) {
 		System.out.println("================================ " + currentStory.getTitle());
 		this.currentStory = currentStory;
-		readerService.insertStory(currentStory,"history");
+		readerService.insertStory(currentStory, "history");
 	}
-	public void InsertToHistory(StoryProperties properties)
-	{
-		readerService.insertStory(properties,"history");
+
+	public void InsertToHistory(StoryProperties properties) {
+		readerService.insertStory(properties, "history");
+		
 	}
 }
